@@ -8,9 +8,15 @@ const server = http.createServer((req, res) => {
 const io = require('socket.io')(server);
 
 io.on('connection', (socket) => {
-  socket.emit('message', 'You are now connected!')
+
+  socket.emit('message', 'You are now connected!');
+
+  socket.on('send_message', (message) => {
+    console.log('Server have receive this message: ' + message);
+  });
+
 });
 
 server.listen(8000, () => {
-  console.log('Server running.')
+  console.log('Server running.');
 });
