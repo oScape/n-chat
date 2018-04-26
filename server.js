@@ -12,7 +12,7 @@ io.on('connection', (socket) => {
   socket.emit('message', 'You are now connected!');
 
   socket.on('send_message', (message) => {
-    console.log('Server have receive this message: ' + message);
+    socket.broadcast.emit('receive_message', message);
   });
 
 });
